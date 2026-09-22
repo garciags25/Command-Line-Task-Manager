@@ -13,7 +13,7 @@ public class Task {
 	private TaskManager manager;
 	
 	public Task(String description) {
-		id = manager.getSize();
+		id = manager.getSize() + 1;
 		this.description = description;
 		status = Status.TODO;
 		createdAt = LocalDateTime.now();
@@ -28,8 +28,16 @@ public class Task {
 		return description;
 	}
 	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public Status getStatus() {
 		return status;
+	}
+	
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 	
 	public LocalDateTime getCreatedAt() {
@@ -40,4 +48,7 @@ public class Task {
 		return updatedAt;
 	}
 	
+	public void setUpdatedAt() {
+		this.updatedAt = LocalDateTime.now();
+	}
 }
