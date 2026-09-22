@@ -24,7 +24,8 @@ public class TaskManager {
 	}
 	
 	public void updateStatus(int id, Task.Status status) {
-		
+		Task updateStatus = taskList.get(id - 1);
+		updateStatus.setStatus(status);
 	}
 	
 	public void delete(int id) {
