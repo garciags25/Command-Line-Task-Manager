@@ -51,4 +51,10 @@ public class Task {
 	public void setUpdatedAt() {
 		this.updatedAt = LocalDateTime.now();
 	}
+	
+	@Override
+	public String toString() {
+		return "id: " + id + "\ndescription: " + description + "\nstatus: " + status +
+				"\ncreated at: " + createdAt + "\nupdated at: " + updatedAt;
+	}
 }

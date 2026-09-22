@@ -25,5 +25,8 @@ public class TaskManager {
 	public void delete(int id) {
 		taskList.remove(taskList.get(id - 1));
 	}
+	public void listTasks() {
+		System.out.println();
+	}
 	
 }
