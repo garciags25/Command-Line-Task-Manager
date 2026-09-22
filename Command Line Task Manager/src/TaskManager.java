@@ -26,7 +26,9 @@ public class TaskManager {
 		taskList.remove(taskList.get(id - 1));
 	}
 	public void listTasks() {
-		System.out.println();
+		for (int i = 0; i < taskList.size(); i++) {
+			System.out.println(taskList.get(i).toString());
+		}
 	}
 	
 }
