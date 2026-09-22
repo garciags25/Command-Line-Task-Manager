@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 
 public class Task {
-	private enum Status {
+	public enum Status {
 		TODO, IN_PROGRESS, DONE
 	}
 	

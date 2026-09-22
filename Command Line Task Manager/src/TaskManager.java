@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class TaskManager {
 	private ArrayList<Task> taskList = new ArrayList<>();
 	
@@ -20,6 +21,10 @@ public class TaskManager {
 		Task updateTask = taskList.get(id - 1);
 		updateTask.setDescription(description);
 		updateTask.setUpdatedAt();
+	}
+	
+	public void updateStatus(int id, Task.Status status) {
+		
 	}
 	
 	public void delete(int id) {
