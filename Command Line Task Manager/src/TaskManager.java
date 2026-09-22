@@ -13,7 +13,7 @@ public class TaskManager {
 	}
 	
 	public void add(String description) {
-		Task task = new Task(description);
+		Task task = new Task(taskList.size() + 1, description);
 		taskList.add(task);
 	}
 	
@@ -26,14 +26,19 @@ public class TaskManager {
 	public void updateStatus(int id, Task.Status status) {
 		Task updateStatus = taskList.get(id - 1);
 		updateStatus.setStatus(status);
+		updateStatus.setUpdatedAt();
 	}
 	
 	public void delete(int id) {
 		taskList.remove(taskList.get(id - 1));
 	}
-	public void listTasks() {
+	public void listByStatus(Task.Status status) {
 		for (int i = 0; i < taskList.size(); i++) {
-			System.out.println(taskList.get(i).toString());
+			Task curr = taskList.get(i);
+			
+			if (curr.getStatus() == status) {
+				System.out.println(curr);
+			} 
 		}
 	}
 	

@@ -10,10 +10,9 @@ public class Task {
 	private Status status;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
-	private TaskManager manager;
 	
-	public Task(String description) {
-		id = manager.getSize() + 1;
+	public Task(int id, String description) {
+		this.id = id;
 		this.description = description;
 		status = Status.TODO;
 		createdAt = LocalDateTime.now();
@@ -54,7 +53,7 @@ public class Task {
 	
 	@Override
 	public String toString() {
-		return "id: " + id + "\ndescription: " + description + "\nstatus: " + status +
+		return "\nid: " + id + "\ndescription: " + description + "\nstatus: " + status +
 				"\ncreated at: " + createdAt + "\nupdated at: " + updatedAt;
 	}
 }
