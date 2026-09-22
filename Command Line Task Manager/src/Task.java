@@ -10,9 +10,10 @@ public class Task {
 	private Status status;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+	private TaskManager manager;
 	
 	public Task(String description) {
-		id = 1;
+		id = manager.getSize();
 		this.description = description;
 		status = Status.TODO;
 		createdAt = LocalDateTime.now();
