@@ -51,7 +51,7 @@ public class TaskManager {
 		highestId++;
 	}
 	
-	public Boolean update(int id, String description) {
+	public boolean update(int id, String description) {
 		Task updateTask = findTaskById(id);
 		if (updateTask == null) {
 			return false;
@@ -61,10 +61,14 @@ public class TaskManager {
 			return true;
 	}
 	
-	public void updateStatus(int id, Task.Status status) {
-		Task updateStatus = taskList.get(id - 1);
+	public boolean updateStatus(int id, Task.Status status) {
+		Task updateStatus = findTaskById(id);
+		if (updateStatus == null) {
+			return false;
+		}
 		updateStatus.setStatus(status);
 		updateStatus.setUpdatedAt();
+		return true;
 	}
 	
 	public boolean delete(int id) {

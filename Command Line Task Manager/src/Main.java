@@ -12,6 +12,18 @@ public class Main {
 		return taskId;
 	}
 	
+	public static Task.Status parseStringToStatus(String string) {
+		
+		Task.Status status = null;
+		
+		if (string.equalsIgnoreCase("mark-in-progress")) {
+			status = Task.Status.IN_PROGRESS;
+		} else if (string.equalsIgnoreCase("mark-done")) {
+			status = Task.Status.DONE;
+		}
+		return status;
+	}
+	
 	public static void main(String[] args) {
 		
 		TaskManager manager = new TaskManager();
@@ -81,6 +93,36 @@ public class Main {
 					break;
 				}
 				System.out.println(manager.getTaskList());
+				break;
+			
+			case "mark-in-progress":
+			case "mark-done":
+				if (args.length != 2) {
+					System.out.println("Unsuccessful. Command 'mark-(Status)' must be followed "
+							+ " by task id number.");
+					break;	
+				}
+				if (manager.isEmpty()) {
+					System.out.println("Unsuccessful. Task List is empty.");
+					break;
+				}
+				taskId = parseArgumentToInt(args[1]);
+				if (taskId == null) {
+					break;
+				}
+				
+				Task.Status status = parseStringToStatus(args[0]);
+				
+				if (status == null) {
+					System.out.println("Could not find corresponding status.");
+					break;
+				}
+				if (manager.updateStatus(taskId, status)) {
+					System.out.println("Successful. Task: " + taskId + " Status Update: " 
+				+ status.name());
+				} else {
+					System.out.println("Unsuccessful. Could not find task.");
+				}
 				break;
 				
 			default: System.out.println("Unknown Command. Known Commands: add, update, delete, list,"
