@@ -87,7 +87,9 @@ public class TaskManager {
 			
 			if (curr.getStatus() == status) {
 				System.out.println(curr);
-			} 
+			} else {
+				System.out.println("Tasks with status: " + status + " not found.");
+			}
 		}
 	}
 	

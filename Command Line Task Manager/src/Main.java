@@ -13,7 +13,6 @@ public class Main {
 	}
 	
 	public static Task.Status parseStringToStatus(String string) {
-		
 		Task.Status status = null;
 		
 		if (string.equalsIgnoreCase("mark-in-progress")) {
@@ -94,6 +93,26 @@ public class Main {
 				}
 				System.out.println(manager.getTaskList());
 				break;
+				
+			case "list todo":
+			case "list in-progress":
+			case "list done":
+				if (args.length != 2) {
+					System.out.println("Unsuccessful. Command 'list (Status)' must be followed by only a valid"
+							+ " status.");
+					break;
+				}
+				if (manager.isEmpty()) {
+					System.out.println("Unsuccessful. Task List is empty.");
+					break;
+				}
+				Task.Status status = parseStringToStatus(args[1]);
+				if (status == null) {
+					System.out.println("Could not find corresponding status.");
+					break;
+				}
+				manager.listByStatus(status);
+				break;
 			
 			case "mark-in-progress":
 			case "mark-done":
@@ -111,7 +130,7 @@ public class Main {
 					break;
 				}
 				
-				Task.Status status = parseStringToStatus(args[0]);
+				status = parseStringToStatus(args[0]);
 				
 				if (status == null) {
 					System.out.println("Could not find corresponding status.");
