@@ -13,6 +13,13 @@ public class TaskManager {
 		return taskList.size();
 	}
 	
+	public boolean isEmpty() {
+		if (taskList.size() != 0) {
+			return false;
+		}
+		return true;
+	}
+	
 	public int findHighestId() {
 		int taskId = 0;
 		int foundHighest = 0;

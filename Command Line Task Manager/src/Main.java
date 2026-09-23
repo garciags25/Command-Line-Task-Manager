@@ -15,7 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		TaskManager manager = new TaskManager();
-		
+
 		if (args.length != 0) {
 			switch (args[0].toLowerCase()) {
 			case "add": 
@@ -34,7 +34,7 @@ public class Main {
 					+ "and end with a description");
 					break;
 				}
-				if (manager.getSize() == 0) {
+				if (manager.isEmpty()) {
 					System.out.println("Unsuccessful. Task List is empty.");
 					break;
 				}
@@ -55,7 +55,7 @@ public class Main {
 					System.out.println("Unsuccessful. Delete must be followed by only a task id number.");
 					break;
 				}
-				if (manager.getSize() == 0) {
+				if (manager.isEmpty()) {
 					System.out.println("Unsuccessful. Task List is empty.");
 					break;
 				}
@@ -76,7 +76,7 @@ public class Main {
 					System.out.println("Unsuccessful. Command 'list' must be the only argument.");
 					break;
 				}
-				if (manager.getSize() == 0) {
+				if (manager.isEmpty()) {
 					System.out.println("Unsuccessful. Task List is empty.");
 					break;
 				}
