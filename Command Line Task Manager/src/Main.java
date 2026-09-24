@@ -83,35 +83,29 @@ public class Main {
 				break;
 				
 			case "list":
-				if (args.length != 1) {
-					System.out.println("Unsuccessful. Command 'list' must be the only argument.");
+				if (args.length < 2 && !manager.isEmpty()) {
+					System.out.println(manager.getTaskList());
 					break;
 				}
 				if (manager.isEmpty()) {
-					System.out.println("Unsuccessful. Task List is empty.");
+					System.out.println("Unsuccesful. List is empty.");
 					break;
 				}
-				System.out.println(manager.getTaskList());
-				break;
-				
-			case "list todo":
-			case "list in-progress":
-			case "list done":
 				if (args.length != 2) {
 					System.out.println("Unsuccessful. Command 'list (Status)' must be followed by only a valid"
 							+ " status.");
 					break;
 				}
-				if (manager.isEmpty()) {
-					System.out.println("Unsuccessful. Task List is empty.");
+				if (args[1].equals("todo") || args[1].equals("in-progress") || args[1].equals("done")) {
+					Task.Status status = parseStringToStatus(args[1]);
+					if (status == null) {
+						System.out.println("Could not find corresponding status.");
+						break;
+					}
+					manager.listByStatus(status);
 					break;
 				}
-				Task.Status status = parseStringToStatus(args[1]);
-				if (status == null) {
-					System.out.println("Could not find corresponding status.");
-					break;
-				}
-				manager.listByStatus(status);
+				System.out.println("Unsuccesful. Second argument not a valid status.");
 				break;
 			
 			case "mark-in-progress":
@@ -130,7 +124,7 @@ public class Main {
 					break;
 				}
 				
-				status = parseStringToStatus(args[0]);
+				Task.Status status = parseStringToStatus(args[0]);
 				
 				if (status == null) {
 					System.out.println("Could not find corresponding status.");
